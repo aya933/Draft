@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>College Student Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+ </head>
+<body>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+<nav class="navbar navbar-expand-sm .bg-info navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/index}">College Student Management System</a>
+  <!-- Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{add-user}" sec:authorize="hasAuthority('ADMIN')">Add Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/table}">Download Cours</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/courses}">Course Management</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/students}">Student Management</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/results}">Score Management</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/teachers}">Teacher Management</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/elementcourses}">Course Element Information</a>
+       
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/departments}">List of Departments</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{/majors}">List of Majors</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{upload-file}">Files</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{/fees}">Fees Info</a>
+       </li>
+      <li class="nav-item">
+      <button  style="background-color:#e7e7e7" >  <a th:href="@{/logout}" >Logout </a> </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" th:src="@{https://www.oxbridgeacademy.edu.za/wp-content/uploads/2014/11/banner-student-portal2.jpg}" alt="First slide">
+    </div> 
+    <div class="carousel-item">
+      <img class="d-block w-100" th:src="@{https://framexec.com/wp-content/uploads/2018/06/Finance-Operations-Research-banner.jpg}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" th:src="@{https://www.cibil.com/resources/cibil/img/banner/education-loan-advice.jpg}" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" th:src="@{http://sol-v2.sonardev.com.au/app/uploads/SOL_Banner_2.jpg}" alt="Fourth slide">
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" th:src="@{https://jameskennedymonash.files.wordpress.com/2015/06/hands-up.jpg}" alt="Card image cap">
+    <div class="card-body">
+      <a class="btn btn-warning btn-sm mb-3" th:href="@{/students}">Students List</a>
+      <p class="card-text">Show Students' List and Scores</p>
+    </div>
+    
+    </div>
+  <div class="card">
+    <img class="card-img-top"  th:src="@{https://static.vecteezy.com/system/resources/previews/001/971/770/large_2x/student-with-white-chalk-showing-the-formula-on-the-blackboard-free-photo.jpg}" alt="Card image cap">
+    <div class="card-body">
+      <a class="btn btn-warning btn-sm mb-3" th:href="@{/teachers}">Teachers List</a>
+      <p class="card-text">Show Teacher's List</p>
+    </div>
+    
+  
+    
+  </div>
+  <div class="card">
+    <img class="card-img-top" th:src="@{https://ipasstheciaexam.com/wp-content/uploads/2016/06/blur-blurred-book-pages-46274-1024x681.jpg}" alt="Card image cap">
+    <div class="card-body">
+   	  <a class="btn btn-warning btn-sm mb-3" th:href="@{/courses}">Course List</a>
+   	  <a class="btn btn-info btn-sm mb-3" th:href="@{/elementcourses}">Check Course Elements</a>
+      
+      <p class="card-text">Show List of Courses and Course Elements</p>
+    </div>
+    
+    </div>
+    
+
+<div class="card-group">
+  <div class="card">
+    
+     <div class="card">
+    <img class="card-img-top"  th:src="@{https://media.istockphoto.com/photos/black-hat-of-university-graduates-picture-id1135111065?k=20&m=1135111065&s=612x612&w=0&h=oCIDBbKQ3vg1TNibAejaAIJITYhOjrPUKb3kMd1ZDCw=}" alt="Card image cap">
+    <div class="card-body">
+   	  <a class="btn btn-warning btn-sm mb-3" th:href="@{/majors}">Majors</a>
+   	  <a class="btn btn-info btn-sm mb-3" th:href="@{/teachers}">Departments</a>
+   	  <a class="btn btn-warning btn-sm mb-3" th:href="@{/fees}">Fees Information</a>
+      
+      <p class="card-text">Show List of Majors,Departments and Fees information</p>
+    </div>
+    
+    </div>
+</div>
+  <div class="card">
+<img class="card-img-top"  th:src="@{https://images.wsj.net/im-180899?width=860&height=573}" alt="Card image cap">
+    <div class="card-body">
+      <a class="btn btn-warning btn-sm mb-3" th:href="@{/results}">Check Scores</a>
+      <p class="card-text">Show Students Scores</p>
+    </div>
+    
+  </div>
+  
+  <div class="card">
+<img class="card-img-top"  th:src="@{https://www.purdueglobal.edu/blog/online-learning/manage-organize-files-header.jpg}" alt="Card image cap">
+    <div class="card-body">
+      <a class="btn btn-warning btn-sm mb-3" th:href="@{/Updownload}">Files List</a>
+      <p class="card-text">Show Files' List</p>
+    </div>
+    
+  </div>
+  
+  </div>
+  </div>
+
+<br>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

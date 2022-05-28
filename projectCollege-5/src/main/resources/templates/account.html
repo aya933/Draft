@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:security="">
+
+<head>
+<meta charset="UTF-8">
+<title>College Student Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+ </head>
+<body>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<nav class="navbar navbar-expand-sm .bg-info navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/index}">College Student Management System</a>
+
+  <!-- Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/courses}">Course Management</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/results}">Score Management</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/teachers}">Teacher Management</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/elementcourses}">Course Element Information</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/departments}">List of Departments</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{/majors}">List of Majors</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{/Updownload}">Files</a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" th:href="@{/fees}">Fees Info</a>
+       </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+
+
+
+
+    <div class ="container">
+   <div class = "row">
+        <h1> List Courses </h1>
+    </div>
+
+    <div class = "row">
+   <div class = "col-lg-3">
+
+           <a sec:authorize="!hasAuthority('ETU')" th:href = "@{add-user}" class = "btn btn-primary btn-sm mb-3" >
+
+               Add Account
+           </a>
+
+
+      </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+             <tr>
+                 <th> Users ID</th>
+                 <th> Active</th>
+                 <th> email </th>
+                 <th> fullname </th>
+                 <th> password </th>
+                 <th> Roles </th>
+
+                 <th> Actions </th>
+             </tr>
+        </thead>
+        <tbody>
+             <tr th:each = "user: ${users}">
+			    <td th:text = "${user.id}"></td>
+			    <td th:text = "${user.active}"></td>
+			    <td th:text = "${user.email}"></td>
+			    <td th:text = "${user.fullname}"></td>
+			    <td th:text = "${user.password}"></td>
+			    <td th:text = "${user.role.code}"></td>
+
+			    <td >
+						<a th:href = "@{/account/edit/{accountid}(accountid=${user.id})}"
+						 class = "btn btn-primary">Update</a>
+
+						 <a sec:authorize="hasAuthority('ADMIN')" th:href = "@{/account/{accountid}(accountid=${user.id})}"
+						 class = "btn btn-danger">Delete</a>
+
+
+						 </td>
+
+             </tr>
+        </tbody>
+    </table>
+</div>
+        </div>
+</body>
+</html>

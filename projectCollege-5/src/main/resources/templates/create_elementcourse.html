@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>College Student Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+ </head>
+<body>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+<nav class="navbar navbar-expand-sm .bg-primary navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">College Student Management System</a>
+
+  <!-- Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+	<div class="container">
+		<div class = "row">
+			<div class = "col-lg-6 col-md-6 col- sm-6 container justify-content-center card">
+			<h1 class = "text-center">  New Course Element </h1>
+<div class = "card-body">
+
+    <form th:action="@{/elementcourses}" th:object = "${elementcourse}" method="POST">
+       
+         
+         <div class="form-group">
+					<strong><label> Student </label></strong>
+					<select th:field="*{student}" class="form-control">
+					<th:block th:each="st :${liststudent}">
+					<option th:text="${st.studentNAME}" th:value="${st.studentid}"/></th:block>
+					</select></div>
+					
+					  <div class ="form-group">
+              <label> Course Element Name </label>
+			<input
+              type = "text"
+              name = "name"
+              th:field = "*{elementcourseNAME}"
+              class = "form-control"
+              placeholder="Enter Course Element Name"
+			  required="required"
+               />
+               </div>
+ 
+					
+               <div class="form-group">
+					<strong><label> Course </label></strong>
+					<select th:field="*{course}" class="form-control">
+					<th:block th:each="cor :${listcourse}">
+					<option th:text="${cor.courseNAME}" th:value="${cor.courseid}"/></th:block>
+					</select>
+					
+				</div>
+				
+					
+				<div class="form-group">
+					<strong><label> Teacher </label></strong>
+					<select th:field="*{teacher}" class="form-control">
+					<th:block th:each="teach :${listteacher}">
+					<option th:text="${teach.teacherNAME}" th:value="${teach.teacherid}"/></th:block>
+					</select></div>
+					
+               <div class = "form-group">
+              <strong><label> Score Percentage </label></strong>
+              <select th:field="*{elementcoursePERCENTAGE}"
+               class = "form-control">
+    			<option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}" 
+     			 th:selected="${i==75}"></option>
+					</select>
+               </div>
+               
+                <div class = "form-group">
+              <strong><label> Score </label></strong>
+              <select th:field="*{elementcourseSCORE}"
+               class = "form-control">
+    			<option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}" 
+     			 th:selected="${i==75}"></option>
+					</select>
+               </div>
+               
+               
+               <div class = "box-footer">
+    		<button type="submit" class = "btn btn-primary">
+        		Submit                           
+    		</button>
+			
+			</div>
+			 
+			</form>
+			</div>
+			
+		</div>
+		</div>
+	</div>
+	
+	
+
+</body>
+</html>

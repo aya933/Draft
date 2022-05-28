@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>College Information Student Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+ </head>
+<body>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+<nav class="navbar navbar-expand-sm .bg-primary navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Student Information Management System</a>
+
+  <!-- Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+	<div class="container">
+		<div class = "row">
+			<div class = "col-lg-6 col-md-6 col- sm-6 container justify-content-center card">
+			<h1 class = "text-center">  New Major </h1>
+<div class = "card-body">
+    <form th:action="@{/majors}" th:object = "${major}" method="POST">
+         <div class = "form-group">
+         
+              <label> Major Name </label>
+			<input
+              type = "text"
+              name = "status"
+              th:field = "*{majorNAME}"
+              class = "form-control"
+              placeholder="Enter New Major"
+			  required="required"
+               />
+               
+               
+               <div class = "box-footer">
+    		<button type="submit" class = "btn btn-primary">
+        		Submit                          
+    		</button>
+    		
+			</div>
+			 </div>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>

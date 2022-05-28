@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>College Student Information Management System</title>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+ </head>
+<body>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+<nav class="navbar navbar-expand-sm .bg-primary navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Student Information Management System</a>
+
+  <!-- Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+	<div class="container">
+		<div class = "row">
+			<div class = "col-lg-6 col-md-6 col- sm-6 container justify-content-center card">
+			<h1 class = "text-center">  New Score </h1>
+<div class = "card-body">
+    <form th:action="@{/results}" th:object = "${result}" method="POST">
+         <div class = "form-group">
+         
+         <div class="form-group">
+         
+					<strong><label> Student </label></strong>
+					<select th:field="*{student}" class="form-control">
+					<th:block th:each="std :${liststudent}">
+					<option th:text="${std.studentNAME}" th:value="${std.studentid}"/></th:block>
+					</select></div>
+					
+					<div class="form-group">
+					<strong><label> Course </label></strong>
+					<select th:field="*{course}" class="form-control">
+					<th:block th:each="crs :${listcourse}">
+					<option th:text="${crs.courseNAME}" th:value="${crs.courseid}"/>
+					</th:block>
+					</select>
+
+				</div>
+         
+              <div class = "form-group">
+               <label> Score Type </label>
+              <select th:field="*{resultSTATE}"
+               class = "form-control">
+    		<option th:value="'Design - Normal Session'" th:text="Design"></option>
+    		<option th:value="'Exam - Normal Session'" th:text="Exam"></option>
+    		<option th:value="'Exam - Retake session'" th:text="ExamRetake"></option>
+    		<option th:value="'Design - Retake session'" th:text="DesignRetake"></option>
+				</select>
+               </div>
+               
+               <div class = "form-group">
+              <strong><label> Score </label></strong>
+              <select th:field="*{resultSCORE}"
+               class = "form-control">
+    			<option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}" 
+     			 th:selected="${i==75}"></option>
+					</select>
+               </div>
+               </div>
+               
+               <div class = "form-group">
+               <label> Result Appreciation </label>
+			<select th:field="*{resultAPPRECIATION}"
+               class = "form-control">
+    		<option th:value="'Excellent'" th:text="Excellent"></option>
+    		<option th:value="'Good'" th:text="Good"></option>
+    		<option th:value="'Satisfactory'" th:text="Satisfactory"></option>
+    		<option th:value="'Passing'" th:text="Passing"></option>
+    		<option th:value="'Unsatisfactory'" th:text="Unsatisfactory"></option>
+				</select>
+				</div>
+               
+               <div class = "form-group">
+               <label> Score Status </label>
+			 <select th:field="*{resultCOMMENT}"
+               class = "form-control">
+    		<option th:value="'Passed'" th:text="Passed"></option>
+    		<option th:value="'Failed'" th:text="Failed"></option>
+    		
+				</select>
+               </div>
+               
+               
+               <div class = "box-footer">
+    		<button type="submit" class = "btn btn-primary">
+        		Submit                          
+    		</button>
+    		
+			</div>
+			 </div>
+			</form>
+		</div>
+		
+	</div>
+	</div>
+
+</body>
+</html>
