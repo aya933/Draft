@@ -17,6 +17,6 @@ import com.management.college.entity.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-	@Query(value = "select * FROM u WHERE u.studentid like %:keyword% or u.studentNAME like %:keyword%", nativeQuery = true)
+	@Query(value = "select * FROM Student u WHERE u.studentid like %:keyword% or u.studentNAME like %:keyword%", nativeQuery = true)
 	 List<Student> findByKeyword(@Param("keyword") String keyword);
 }

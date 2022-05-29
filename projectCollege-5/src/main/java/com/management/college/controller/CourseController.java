@@ -1,12 +1,14 @@
 package com.management.college.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.management.college.entity.Course;
 import com.management.college.services.CourseService;
@@ -79,6 +81,16 @@ public class CourseController {
 		return "redirect:/courses";
 	}
 	
+	@RequestMapping(path = {"/","/searchC"})
+	 public String Course(Course course, Model model, String keyword) {
+	  if(keyword!=null) {
+	   List<Course> list = courseService.getByKeyword(keyword);
+	   model.addAttribute("list", list);
+	  }else {
+	  List<Course> list = courseService.getAllCourses();
+	  model.addAttribute("list", list);}
+	  return "Courses";
+	 }
 	
 	
 }

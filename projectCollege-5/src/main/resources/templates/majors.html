@@ -93,8 +93,7 @@
 			    <td th:text = "${major.majorNAME}"></td>
 			    
 			    <td>
-						<a sec:authorize="hasAuthority('ADMIN')" th:href = "@{/majors/edit/{majorid}(majorid=${major.majorid})}"
-						 class = "btn btn-primary">Update</a>
+						
 						 
 						 <a sec:authorize="hasAuthority('ADMIN')" th:href = "@{/majors/{majorid}(majorid=${major.majorid})}"
 						 class = "btn btn-danger">Delete</a>

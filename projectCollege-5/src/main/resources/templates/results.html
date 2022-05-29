@@ -79,6 +79,13 @@
           Add New Score
       </a>
       </div>
+      
+      <form th:action="@{/searchO}" method="get">
+  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by ID or status " size="50" >
+  <button type="submit" class="btn btn-info" >Search</button>
+  <button type="submit" class="btn btn-info" >Reset</button>
+  </form>
+      
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
              <tr>
@@ -112,6 +119,25 @@
 						 </td>
     
              </tr>
+             <tr th:each="l : ${list}" th:field="${l}">
+       	
+
+<td th:text = "${l.resultid}"></td>
+			    <td th:text = "${l.student.studentNAME}"></td>
+			    <td th:text = "${l.course.courseNAME}"></td>
+			    <td th:text = "${l.resultSTATE}"></td>
+			    <td th:text = "${l.resultSCORE}"></td>
+			    <td th:text = "${l.resultAPPRECIATION}"></td>
+			    <td th:text = "${l.resultCOMMENT}"></td>
+      <td>
+						<a th:href = "@{/results/edit/{resultid}(resultid=${result. resultid})}"
+						 class = "btn btn-primary">Update</a>
+						 
+						 <a th:href = "@{/courses/{resultid}(resultid=${result. resultid})}"
+						 class = "btn btn-danger">Delete</a>
+						 </td>
+      </tr>
+             
         </tbody>
     </table>
 </div>

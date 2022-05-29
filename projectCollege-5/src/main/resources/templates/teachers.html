@@ -80,7 +80,7 @@
       </div>
 
         <form th:action="@{/searchT}" method="get">
-            <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Student Name  & ID " size="50" >
+            <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Teacher by Name and ID " size="50" >
             <button type="submit" class="btn btn-info" >Search</button>
             <button type="submit" class="btn btn-info" >Reset</button>
         </form>
@@ -115,7 +115,7 @@
 						<a  sec:authorize="hasAuthority('ADMIN')" th:href = "@{/teachers/edit/{teacherid}(teacherid=${teacher.teacherid})}"
                         class = "btn btn-primary">Update</a>
 
-                     <a  th:href = "@{/teachers/{teacherid}(teacherid=${teacher.teacherid})}"
+                     <a sec:authorize="hasAuthority('ADMIN')" th:href = "@{/teachers/{teacherid}(teacherid=${teacher.teacherid})}"
                         class = "btn btn-danger">Delete</a>
 						 </td>
 
@@ -124,6 +124,7 @@
                  <td th:text="${l.teacherNUMBER}"></td>
                  <td th:text="${l.teacherNAME}"></td>
                  <td th:text="${l.teacherEMAIL}"></td>
+                 <td th:text = "${l.teacherBIRTH}"></td>
                  <td th:text="${l.teacherGENDER}"></td>
                  <td th:text="${l.course.courseNAME}"></td>
                  <td th:text="${l.department.departmentNAME}"></td>

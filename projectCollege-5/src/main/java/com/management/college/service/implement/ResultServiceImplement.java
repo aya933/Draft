@@ -43,6 +43,8 @@ public void deleteResultById(Long id) {
 	resultRepository.deleteById(id);	
 }
 
-
+public List<Result> getByKeyword(String keyword){
+	return resultRepository.findByKeyword(keyword);
+}
 
 }

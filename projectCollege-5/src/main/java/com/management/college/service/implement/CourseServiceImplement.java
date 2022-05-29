@@ -54,6 +54,9 @@ private CourseRepository courseRepository;
 		courseRepository.deleteById(id);	
 	}
 	
+	public List<Course> getByKeyword(String keyword){
+		  return courseRepository.findByKeyword(keyword);
+		 }
 	
 }
 

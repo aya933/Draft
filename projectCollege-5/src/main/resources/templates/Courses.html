@@ -77,6 +77,12 @@
         <h1> List Courses </h1>
     </div>
     
+    <form th:action="@{/searchC}" method="get">
+  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Student Name  & ID " size="50" >
+  <button type="submit" class="btn btn-info" >Search</button>
+  <button type="submit" class="btn btn-info" >Reset</button>
+  </form>
+    
     <div class = "row">
    <div class = "col-lg-3">
 
@@ -101,6 +107,22 @@
              </tr>
         </thead>
         <tbody>
+        
+        <tr th:each="l : ${list}" th:field="${l}">
+       	<td th:text="${l.courseid}"></td>
+       	<td th:text="${l.courseNAME}"></td>
+       	<td th:text="${l.courseTYPE}"></td>
+       	<td th:text="${l.Credit}"></td>
+       	<td th:text="${l.courseSEMESTER}"></td>
+        <td th:text="${l.courseDate}"></td>
+      <td>
+						<a th:href = "@{/courses/edit/{courseid}(courseid=${course.courseid})}"
+						 class = "btn btn-primary">Update</a>
+						 
+						 <a th:href = "@{/courses/{courseid}(courseid=${course.courseid})}"
+						 class = "btn btn-danger">Delete</a>
+						 </td>
+      </tr>
              <tr th:each = "course: ${courses}">
 			    <td th:text = "${course.courseid}"></td>
 			    <td th:text = "${course.courseNAME}"></td>
@@ -110,6 +132,7 @@
 			    <td th:text = "${course.courseDate}"></td>
 
 			    <td >
+			    
 						<a th:href = "@{/courses/edit/{courseid}(courseid=${course.courseid})}"
 						 class = "btn btn-primary">Update</a>
 

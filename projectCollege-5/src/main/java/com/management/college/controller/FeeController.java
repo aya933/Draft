@@ -54,7 +54,7 @@ public class  FeeController {
 		return "edit_fee";
 	}
 	
-	@PostMapping("/courses/{feeid}")
+	@PostMapping("/fees/{feeid}")
 	public String updateFee(@PathVariable Long feeid,
 			@ModelAttribute("fee") Fee fee,
 			Model model) {

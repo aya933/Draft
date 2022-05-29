@@ -3,6 +3,7 @@ package com.management.college.services;
 import java.util.List;
 
 import com.management.college.entity.Result;
+import com.management.college.entity.Teacher;
 
 
 public interface ResultService {
@@ -16,5 +17,7 @@ List <Result> getAllResults();
 	void deleteResultById(Long id);
 
 	Result updateResult(Result result);
+	
+	List<Result> getByKeyword(String keyword);
 
 }

@@ -17,4 +17,6 @@ public interface CourseService {
 	
 	Course getCourseById(Long id);
 	
+	List<Course> getByKeyword(String keyword);
+	
 }

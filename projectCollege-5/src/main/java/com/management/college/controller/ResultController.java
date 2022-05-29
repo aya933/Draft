@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.management.college.entity.Course;
 import com.management.college.entity.Result;
@@ -97,4 +98,17 @@ public class ResultController {
 		resultService.deleteResultById(resultid);
 		return "redirect:/results";
 	}
+	
+	@GetMapping("/results/{resultid}")
+	@RequestMapping(path = {"/","/searchO"})
+	public String Result(Result result, Model model, String keyword) {
+		if(keyword!=null) {
+			List<Result> list = resultService.getByKeyword(keyword);
+			model.addAttribute("list", list);
+		}else {
+			List<Result> list = resultService.getAllResults();
+			model.addAttribute("list", list);}
+		return "results";
+	}
+
 }

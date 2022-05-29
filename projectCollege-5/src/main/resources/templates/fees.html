@@ -91,15 +91,13 @@
              </tr>
         </thead>
         <tbody>
-             <tr th:each = "major: ${fees}">
+             <tr th:each = "fee: ${fees}">
 			    <td th:text = "${fee.feeid}"></td>
 			    <td th:text = "${fee.feeNAME}"></td>
 			    <td th:text = "${fee.feePRICE}"></td>
 			    <td th:text = "${fee.feeCOMMENT}"></td>
 			    
 			    <td>
-						<a class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')"
-                           th:href="@{/majors/edit/{feeid}(feeid=${fee.feeid})}">Update</a>
 						 
 						 <a sec:authorize="hasAuthority('ADMIN')" th:href = "@{/fees/{feeid}(feeid=${fee.feeid})}"
 						 class = "btn btn-danger">Delete</a>
